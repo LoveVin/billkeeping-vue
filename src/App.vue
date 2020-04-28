@@ -1,40 +1,24 @@
 <template>
-    <div>
+    <div id="app">
         <router-view/>
     </div>
 </template>
 
 <style lang="scss">
-    *{
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    @import "~@/assets/style/reset.scss";
+    @import "~@/assets/style/helper.scss";
     body{
         line-height: 1.5;
-    }
-    a{
-        text-decoration: none;
-        color: inherit;
-    }
-    #app {
-        font-family: Avenir, Helvetica, Arial, sans-serif;
+        font-family: $font-hei;
+        //Vue cli 自带的，在苹果系统上的设置
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        text-align: center;
-        color: #2c3e50;
+        color: #333;
+        font-size: 16px;
     }
-
-    #nav {
-        padding: 30px;
-
-        a {
-            font-weight: bold;
-            color: #2c3e50;
-
-            &.router-link-exact-active {
-                color: #42b983;
-            }
-        }
+    .clearfix::after{
+        content: '';
+        display: block;
+        clear: both;
     }
 </style>
