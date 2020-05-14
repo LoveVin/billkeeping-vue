@@ -6,7 +6,7 @@
             <input type="text" placeholder="在这里输入备注" v-model="value">
         </label>
     </div>
-</template>
+</template> 
 
 <script lang="ts">
     import Vue from 'vue'
