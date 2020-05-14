@@ -1,9 +1,9 @@
-// eslint-disable
-//const path = require('path');
+/* eslint-disable */
+const path = require('path');
 
 module.exports = {
     lintOnSave: false,
-    /*chainWebpack: config => {
+    chainWebpack: config => {
         const dir = path.resolve(__dirname, 'src/assets/icons');
 
         config.module
@@ -28,8 +28,5 @@ module.exports = {
         // config.plugin('svg-sprite').use(require('svg-sprite-loader-mod/plugin'), [{plainSprite: true}])
         // config.module.rule('svg').exclude.add(dir)
 
-    }*/
+    }
 };
-/*module.exports = {
-  lintOnSave: false
-}*/
