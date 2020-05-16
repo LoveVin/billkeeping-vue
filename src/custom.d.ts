@@ -7,20 +7,23 @@ type RecordItem = {
     amount: number;
     createdAt?: Date;
 }
-type tag = {
+type Tag = {
     id: string;
     name: string;
 }
 type tagListModel = {
-    data: tag[];
+    data: Tag[];
     create: (name: string) => 'success' | 'duplicated';//联合类型
-    fetch: () => tag[];
+    fetch: () => Tag[];
     update: (id: string, name: string) => 'success' | 'not found' | 'duplicated';
     save: () => void;
     remove: (id: string) => boolean;
 }
 
 interface Window {
-    tagList: tag[];
+    tagList: Tag[];
+    findTag: (id: string) => Tag | undefined;
     createTag: (name: string) => void;
+    removeTag: (id: string) => boolean;
+    updateTag: (id: string, name: string) => 'success' | 'not found' | 'duplicated';
 }
