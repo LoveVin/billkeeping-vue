@@ -33,7 +33,8 @@
             this.$store.commit('fetchRecords');
         }
         onUpdateTags(value: string[]) {
-            this.record.tags = value;
+            //TODO
+            //this.record.tags = value;
         }
         onUpdateNotes(value: string) {
             this.record.notes = value;

@@ -1,11 +1,16 @@
 //xxx.d.ts 的 d 是 define 的意思，表示 ts 中的变量定义，是全局的
 
+type RootState = {
+    recordList: RecordItem[];
+    tagList: Tag[];
+    currentTag?: Tag;
+}
 type RecordItem = {
-    tags: string[];
+    tags: Tag[];
     notes: string;
     type: string;
     amount: number;
-    createdAt?: Date;
+    createdAt?: string;
 }
 type Tag = {
     id: string;
