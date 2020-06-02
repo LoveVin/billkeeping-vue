@@ -1,7 +1,7 @@
 <template>
     <Layout>
         <Tabs class-prefix="type" :data-source="recordTypeLIst" :value.sync="type"/>
-        <ol>
+        <ol v-if="groupedList.length>0">
             <li v-for="(group, index) in groupedList" :key="index">
                 <h3 class="title">{{beautify(group.title)}} <span>￥{{group.total}}</span></h3>
                 <ol>
@@ -13,6 +13,9 @@
                 </ol>
             </li>
         </ol>
+        <div v-else class="noResult">
+            目前没有记录
+        </div>
     </Layout>
 </template>
 
@@ -60,7 +63,7 @@
         }
 
         tagString(tags: Tag[]) {
-            return tags.join(',');
+            return tags.length === 0 ? '无' : tags.map(t => t.name).join(' / ');
         }
 
         beautify(string: string) {
@@ -86,6 +89,10 @@
 </script>
 
 <style lang="scss" scoped>
+    .noResult{
+        padding: 16px;
+        text-align: center;
+    }
     ::v-deep {
         .type-tabs-item {
             background: #c4c4c4;
