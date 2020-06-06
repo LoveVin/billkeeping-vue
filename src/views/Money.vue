@@ -1,11 +1,11 @@
 <template>
     <Layout class-prefix="layout">
         <NumberPad :value.sync="record.amount" @submit="saveRecord"/>
-        <Tabs :data-source="recordTypeList" :value.sync="record.type"/>
+         <Tabs :data-source="recordTypeList" :value.sync="record.type"/>
         <div class="notes">
             <FormItem filed-name="备注" placeholder="在这里输入备注" :value="record.notes" @update:value="onUpdateNotes"/>
         </div>
-        <Tags @update:value="onUpdateTags"/>
+        <Tags @update:value="record.tags = $event" :selected-tags="selectedTags"/>
     </Layout>
 </template>
 
@@ -23,6 +23,7 @@
     })
     export default class Money extends Vue {
         recordTypeList = recordTypeList;
+        selectedTags: Tag[] = [];
         get recordList(){
             return this.$store.state.recordList;
         }
@@ -32,10 +33,6 @@
         created(){
             this.$store.commit('fetchRecords');
         }
-        onUpdateTags(value: string[]) {
-            //TODO
-            //this.record.tags = value;
-        }
         onUpdateNotes(value: string) {
             this.record.notes = value;
         }
@@ -44,6 +41,8 @@
                 return window.alert("请至少选择一个标签！");
             }
             this.$store.commit('createRecord',this.record);
+            this.record.notes = '';
+            this.selectedTags = [];
         }
     }
 </script>
