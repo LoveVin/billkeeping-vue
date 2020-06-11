@@ -1,6 +1,7 @@
 <template>
     <Layout>
         <Tabs class-prefix="type" :data-source="recordTypeLIst" :value.sync="type"/>
+        <!--<Echarts @update:value="tagType = $event" :echarts-option="echartsOption"/>-->
         <ol v-if="groupedList.length>0">
             <li v-for="(group, index) in groupedList" :key="index">
                 <h3 class="title">{{beautify(group.title)}} <span>￥{{group.total}}</span></h3>
@@ -26,14 +27,48 @@
     import recordTypeList from '@/constants/recordTypeList';
     import dayjs from 'dayjs';
     import clone from '@/lib/clone';
+    import Echarts from '@/components/Echarts.vue';
 
     const oneDay = 86400 * 1000;//一天的总共毫秒数，因为js的时间是以毫秒为单位的
     @Component({
-        components: {Tabs}
+        components: {Echarts, Tabs}
     })
     export default class Statistics extends Vue {
         type = '-';
         recordTypeLIst = recordTypeList;
+        tagType = '';
+        /*echartsOption = {
+            series: [
+                {
+                    name: '支出',
+                    type: 'pie',
+                    radius: ['50%', '70%'],
+                    avoidLabelOverlap: false,
+                    label: {
+                        show: false,
+                        position: 'center',
+                        fontSize: '20',
+                        fontWeight: 'bold',
+                        formatter: '{b}\n\n{d}%'
+                    },
+                    emphasis: {
+                        label: {
+                            show: true,
+                        }
+                    },
+                    labelLine: {
+                        show: false
+                    },
+                    data: [
+                        {value: 335, name: '餐饮'},
+                        {value: 310, name: '邮件营销'},
+                        {value: 234, name: '联盟广告'},
+                        {value: 135, name: '视频广告'},
+                        {value: 1548, name: '搜索引擎'}
+                    ]
+                }
+            ]
+        };*/
 
         get recordList() {
             return (this.$store.state as RootState).recordList;
@@ -89,17 +124,19 @@
 </script>
 
 <style lang="scss" scoped>
-    .noResult{
+    .noResult {
         padding: 16px;
         text-align: center;
     }
+
     ::v-deep {
         .type-tabs-item {
-            background: #c4c4c4;
-
+            background: #ff9f7f;
+            color: white;
             &.selected {
 
                 background: white;
+                color: #333;
 
                 &::after {
                     display: none;

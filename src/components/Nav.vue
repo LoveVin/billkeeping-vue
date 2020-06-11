@@ -27,9 +27,10 @@
         @extend %outerShadow;
         display: flex;
         flex-direction: row;
-        font-size: 12px;
+        font-size: 10px;
+        background: white;
         > .item {
-            padding: 2px 0;
+            padding: 5px 0;
             width: 33.33333%;
             display: flex;
             justify-content: center;

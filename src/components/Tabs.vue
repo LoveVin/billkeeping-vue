@@ -33,7 +33,8 @@
 
 <style lang="scss" scoped>
     .tabs {
-        background: #c4c4c4;
+        background: #ff9f7f;
+        color: white;
         display: flex;
         text-align: center;
         font-size: 24px;
@@ -46,6 +47,9 @@
             align-items: center;
             position: relative;
 
+            &.selected{
+                color: #333;
+            }
             &.selected::after {
                 content: '';
                 position: absolute;

@@ -5,7 +5,7 @@
             <button @click="inputContent">1</button>
             <button @click="inputContent">2</button>
             <button @click="inputContent">3</button>
-            <button @click="remove">删除</button>
+            <button @click="remove" class="delete"><Icon name="delete"/></button>
             <button @click="inputContent">4</button>
             <button @click="inputContent">5</button>
             <button @click="inputContent">6</button>
@@ -80,18 +80,18 @@
             padding: 9px 16px;
             text-align: right;
             min-height: 72px;
+            background: white;
         }
 
         .buttons {
             @extend %clearFix;
-            @extend %innerShadow;
 
             > button {
                 width: 25%;
                 height: 64px;
                 float: left;
                 background: transparent;
-                border: none;
+                font-size: 20px;
 
                 &.ok {
                     height: 64*2px;
@@ -102,35 +102,16 @@
                     width: 25%*2;
                 }
 
-                $bg: #f2f2f2;
-
-                &:nth-child(1) {
-                    background: $bg;
+                &.delete{
+                    font-size: 26px;
                 }
 
-                &:nth-child(2), &:nth-child(5) {
-                    //darken是scss的颜色函数
-                    background: darken($bg, 4%);
-                }
+                border: none;
+                border-top: 1px solid rgba(0, 0, 0, 0.25);
+                border-right: 1px solid rgba(0, 0, 0, 0.25);
 
-                &:nth-child(3), &:nth-child(6), &:nth-child(9) {
-                    background: darken($bg, 4%*2);
-                }
-
-                &:nth-child(4), &:nth-child(7), &:nth-child(10) {
-                    background: darken($bg, 4%*3);
-                }
-
-                &:nth-child(8), &:nth-child(11), &:nth-child(13) {
-                    background: darken($bg, 4%*4);
-                }
-
-                &:nth-child(14) {
-                    background: darken($bg, 4%*5);
-                }
-
-                &:nth-child(12) {
-                    background: darken($bg, 4%*6);
+                &:nth-child(4),&:nth-child(8),&:nth-child(12){
+                    border-right: none;
                 }
             }
 
